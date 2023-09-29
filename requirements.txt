@@ -1,0 +1,13 @@
+attrs==23.1.0
+jsonschema==4.19.1
+jsonschema-specifications==2023.7.1
+numpy==1.26.0
+pandas==2.1.1
+Pillow==10.0.1
+python-dateutil==2.8.2
+pytz==2023.3.post1
+referencing==0.30.2
+regex==2023.8.8
+rpds-py==0.10.3
+six==1.16.0
+tzdata==2023.3
