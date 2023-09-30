@@ -2,8 +2,10 @@ attrs==23.1.0
 jsonschema==4.19.1
 jsonschema-specifications==2023.7.1
 numpy==1.26.0
+packaging==23.1
 pandas==2.1.1
 Pillow==10.0.1
+pytesseract==0.3.10
 python-dateutil==2.8.2
 pytz==2023.3.post1
 referencing==0.30.2
