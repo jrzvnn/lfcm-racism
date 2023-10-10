@@ -19,11 +19,11 @@ def preprocess_tweet_text(tweet_text):
     # Remove user mentions
     tweet_text = re.sub(r'@\w+', '', tweet_text)
     
-    # Remove symbols
-    tweet_text = re.sub(r'[^\w\s]', '', tweet_text)
-    
     # Remove newlines
     tweet_text = tweet_text.replace('\n', ' ')
+
+    # Remove symbols
+    tweet_text = re.sub(r'[^\w\s]', '', tweet_text)
     
     return tweet_text
 

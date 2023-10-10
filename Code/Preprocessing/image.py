@@ -9,7 +9,7 @@ output_folder = "/home/jrzvnn/Documents/Projects/lfcm-racism/Data/Processed_Data
 os.makedirs(output_folder, exist_ok=True)
 
 # Function to resize an image and save it
-def resize_image(input_path, output_path, size=(400, 400)):
+def resize_image(input_path, output_path, size=(500,500)):
     try:
         image = Image.open(input_path)
         image = image.resize(size, Image.LANCZOS)
