@@ -123,7 +123,7 @@ def preprocess_image_to_np_arr(image, dtype=np.float32):
         #image.show()
         image_np = np.array(image, dtype=dtype)
         mean = (104.00698793, 116.66876762, 122.67891434) # mean values of RGB used for mean subtraction
-        print('initial image np:', image_np.shape)
+        # print('initial image np:', image_np.shape)
         if (image_np.shape.__len__() < 3 or image_np.shape[2] > 3):
             im_gray = image
             image = Image.new("RGB", im_gray.size)
@@ -144,3 +144,11 @@ def preprocess_image_to_np_arr(image, dtype=np.float32):
         print(f"{module_name} preprocess_image_to_np_arr() error:", e)
         return None        
 
+
+def filepath_to_image(filepath):
+    image = None
+    try:
+        image = Image.open(filepath)
+    except:
+        None 
+    return image

@@ -20,9 +20,9 @@ class LFCM(nn.Module):
     def forward(self, image, img_text, tweet, comment):
 
         i = self.cnn(image) # * 0 # CNN
-        it = img_text * 0  # Img Text Input
-        tt = tweet * 0   # Tweet Text Input
-        tc = comment * 0 # Aggregated Tweet Comment Input
+        it = img_text  # Img Text Input
+        tt = tweet  # Tweet Text Input
+        tc = comment # Aggregated Tweet Comment Input
         x = self.mm(i, it, tt, tc) # Multimodal net
         return x
 
@@ -59,8 +59,8 @@ class OldModel(nn.Module):
     def forward(self, image, img_text, tweet):
 
         i = self.cnn(image) # * 0 # CNN
-        it = img_text * 0  # Img Text Input
-        tt = tweet * 0   # Tweet Text Input
+        it = img_text # * 0Img Text Input
+        tt = tweet # * 0 Tweet Text Input
         x = self.mm(i, it, tt) # Multimodal net
         return x
 
@@ -97,7 +97,8 @@ class NewFCM(nn.Module):
         self.fc1 = BasicFC(1024*4, 2048)
         self.fc2 = BasicFC(2048, 1024)
         self.fc3 = BasicFC(1024, 512)
-        self.fc4 = nn.Linear(512, c['num_classes'])
+        self.fc4 = BasicFC(512, 256)
+        self.fc5 = nn.Linear(256, c['num_classes'])
 
     def forward(self, i, it, tt, tc):
 
@@ -121,6 +122,7 @@ class NewFCM(nn.Module):
         x = self.fc2(x)
         x = self.fc3(x)
         x = self.fc4(x)
+        x = self.fc5(x)
 
         return x
     
