@@ -33,8 +33,12 @@ uploaded_files = st.sidebar.file_uploader("📂 Upload Data", type=["csv"], acce
 # Add some space above the file uploader
 st.sidebar.markdown("<br>", unsafe_allow_html=True)
 
-if uploaded_files:
-    st.sidebar.button('Compare FCM and LFCM', type='primary')
+if not (uploaded_files):
+    if (selected_model == 'FCM'):
+        st.warning("No FCM Model results available. Please upload csv file.")
+    elif (selected_model == 'LFCM'):
+        st.warning("No LFCM Model results available. Please upload csv file.")
+
 
 # a, b, c, d
 contingency_table = {'a': 0, 'b': 0, 'c':0, 'd':0}
