@@ -188,7 +188,7 @@ class InceptionD(nn.Module):
         self.branch3x3dbl_3 = BasicConv2d(96, 96, kernel_size=3, stride=2)
         self.branch_pool = F.max_pool2d(x, kernel_size=3, stride=2)
         outputs = [self.branch3x3x3, self.branch3x3dbl_3, self.branch_pool]
-        return torch.cat(outputs, 1)
+        return outputs
 
     def forward(self, x: Tensor) -> Tensor:
         outputs = self._forward(x)
