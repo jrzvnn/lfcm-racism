@@ -8,7 +8,7 @@ import customTransform
 import torch
 import lfcm
 
-load_dotenv() 
+load_dotenv()
 
 models_path = os.getenv('MODELS_PATH')
 
@@ -24,7 +24,7 @@ def get_data_from_csv(csv, **kwargs):
     try:
         tweet_id = csv.name.replace('.csv', '')
     except:
-        tweet_id = "" 
+        tweet_id = ""
 
     # get tweet text
     try:
@@ -53,7 +53,7 @@ def get_uploaded_files(files):
     for _csv in files:
         data = get_data_from_csv(_csv)
         render_data.append(data)
-    return render_data 
+    return render_data
         # print(data)
     # print('\n\n\n')
 
@@ -84,7 +84,7 @@ def image_to_tensor(_image=None):
         image = customTransform.preprocess_image_to_np_arr(image)
     except Exception as e:
         image = np.zeros((3, 299, 299), dtype=np.float32).requires_grad_()
-    
+
     return torch.from_numpy(image.copy())
 
 def embedding_to_tensor(str_embedding):
@@ -94,9 +94,9 @@ def embedding_to_tensor(str_embedding):
         embedding = np.array(str_embedding, dtype=np.float32)
     except:
         embedding = np.zeros(hidden_state, dtype=np.float32)
-    finally:
-        return torch.from_numpy(embedding.copy()).requires_grad_()
-    
+    # Removed the `return` statement from the `finally` block
+    tensor = torch.from_numpy(embedding.copy()).requires_grad_()
+    return tensor
 
 def load_model(model_type, checkpoint_filepath):
     if model_type == 'fcm':
@@ -113,7 +113,7 @@ def load_model(model_type, checkpoint_filepath):
         model = model.to('cpu')
         model.load_state_dict(checkpoint)
         return model
-    
+
 def load_targets(filepath):
     targets = {}
     with open(filepath, "r", encoding="utf-8") as file:
@@ -125,11 +125,11 @@ def load_targets(filepath):
 
         for row in data:
             targets[row[0]] = row[-2]
-    
+
     return targets
-    
-    
-fcm_model = load_model('fcm', f"{models_path}/fcm_e16b24_full.pth")  
+
+
+fcm_model = load_model('fcm', f"{models_path}/fcm_e16b24_full.pth")
 
 lfcm_model = load_model('lfcm', f"{models_path}/lfcm_e16b24_full.pth")
 
@@ -222,7 +222,7 @@ def lfcm_evaluate(i_ten, it_ten, tt_ten, c_ten, target):
 #     elif model_type == 'lfcm':
 #         threshold == float(os.getenv('LFCM_TH'))
 #         model = lfcm_model
-    
+
 #     with torch.no_grad():
 #         model.eval()
 #         if model_type == 'fcm':
@@ -242,4 +242,3 @@ def lfcm_evaluate(i_ten, it_ten, tt_ten, c_ten, target):
 #             pred = 10
 
 #     return {'tp':tp, 'tn':tn, 'fp':fp, 'fn':fn, 'pred':pred}
-    
