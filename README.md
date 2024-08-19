@@ -43,5 +43,8 @@ LFCM_TH=
 MODELS_PATH=
 ```
 
+### License
+This project is licensed under the [MIT License](https://github.com/jrzvnn/lfcm-racism/blob/main/LICENSE). See the [LICENSE](https://github.com/jrzvnn/lfcm-racism/blob/main/LICENSE) file for details.
+
 ### Contact
 Feel free to reach out through [LinkedIn](https://www.linkedin.com/in/jrz-vnn/) if you have any questions or need further information.
