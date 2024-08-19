@@ -1,3 +1,5 @@
+This repository features the LFCM model, which improves racist post detection by incorporating comment features alongside visual and textual data, developed during an undergraduate thesis at the Polytechnic University of the Philippines.
+
 ### Project Structure
 
 ```
@@ -29,3 +31,17 @@ To run the project, you will need to install the Python packages listed in requi
 ```
 pip install -r requirement.txt
 ```
+
+### Environment Variables
+Before running the project, you need to create a .env file in the root directory of the project. This file should include the following environment variables:
+```
+ROOT_PATH=
+IMAGES_RESIZED_PATH=
+TEST_EMBEDDINGS=
+FCM_TH=
+LFCM_TH=
+MODELS_PATH=
+```
+
+### Contact
+Feel free to reach out through [LinkedIn](https://www.linkedin.com/in/jrz-vnn/) if you have any questions or need further information.
